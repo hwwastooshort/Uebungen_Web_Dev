@@ -1,0 +1,15 @@
+html {
+  /* background-color: rgb(240, 240, 240); */
+  background-color: #f0f0f0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  text-align: center;
+  background-color: #333;
+  color: white;
+}
+
+section {
+  width: 100%;
+}
