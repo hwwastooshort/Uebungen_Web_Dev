@@ -28,6 +28,11 @@ label {
   font-family: var(--monospace);
 }
 
+p {
+  padding: 10px;
+  line-height: 24px;
+}
+
 nav {
   background: var(--main);
   font-size: 1.15rem;
