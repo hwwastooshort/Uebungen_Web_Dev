@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <title>Bubbling vs. Capturing</title>
+    <meta charset='utf-8'>
+</head>
+
+<style>
+    body * {
+        margin: 10px;
+        border: 1px solid blue;
+    }
+</style>
+
+<body>
+    <form>FORM
+        <div>DIV
+            <p>P</p>
+        </div>
+    </form>
+
+    <script>
+        //Loop through all DOM elements
+        for (let elem of document.querySelectorAll('*')) {
+            //add an event listener for capturing phase first, use addEventListener
+            //alert the current element (elem.tagName)
+            elem.addEventListener('click', function(event) {
+                console.log(`capture ${elem.tagName}`);
+            }, true);
+
+            elem.addEventListener('click', function(event) {
+                if (elem.tagName === 'FORM') {
+                    event.stopPropagation();
+                }
+                console.log(`bubble ${elem.tagName}`);
+            }, false)
+            
+
+            //add an event listener for bubbling phase second
+            //alert the current element (elem.tagName)   
+           
+        }
+
+        
+    </script>
+
+</body>

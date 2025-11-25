@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+        <li class="draggable" draggable="true">Brot</li>        
+        <li class="draggable" draggable="true">Butter</li>
+        <li class="draggable" draggable="true">Kaffee</li>
+        <li class="draggable" draggable="true">Bier</li>
+        <li class="draggable" draggable="true">Zucker</li>
+    </ul>
+
+    <script>
+        const draggable = document.querySelectorAll(".draggable");
+        const list = document.getElementById("list");
+
+        let swapElement;
+        
+
+        for (let elem of draggable) {
+            elem.ondragstart = (event) => {
+                swapElement = event.target;
+                console.log(`Drag startet with ${swapElement}`)
+                
+            }
+
+            elem.ondrag = (event) => {
+                console.log(`dragging going on with ${swapElement}`)
+            }
+
+            elem.ondragend = (event) => {
+                console.log(`dragging ended with ${swapElement}`);
+            }
+
+            elem.ondragover = (event) => {
+                event.preventDefault();
+                event.currentTarget.style = "background-color:pink";
+            }
+
+            elem.ondragleave = (event) => {
+                event.currentTarget.style = "background-color:white";
+            }
+
+            elem.ondrop = (event) => {
+                if (elem.textContent !== swapElement.textContent) {
+                    let temp = event.target.textContent;
+                    event.target.textContent = swapElement.textContent;
+                    swapElement.textContent = temp;
+                }
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
