@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snowfall Effect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            /* Ein dunklerer Hintergrund, damit man den weißen Schnee sieht, falls kein Bild da ist */
+            background-color: #1a1a2e; 
+            background-image: url('view-snowy-mountain-fir-trees-with-blue-sky-background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Container für den Schnee */
+        #snow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* WICHTIG: Damit man Buttons unter dem Schnee klicken kann */
+            z-index: 100;
+        }
+
+        h1 {
+            font-family: 'Mountains of Christmas', serif;
+            font-size: 10rem;
+            width: 100%;
+            text-align: center;
+            display: block;
+            margin-top: 20vh;
+            color: white;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Animation */
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        .snowflake {
+            position: absolute;
+            top: 0;
+            /* Animation wird im JS gesetzt, um zufällige Geschwindigkeiten zu erlauben */
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <g id="spike">
+                <line x1="0" y1="0" x2="150" y2="0" stroke="white" stroke-width="2" />
+                <polyline points="0,-50 35,0 0,50" fill="transparent" stroke="white" stroke-width="2"/>
+                <polyline points="35,-50 70,0 35,50" fill="transparent" stroke="white" stroke-width="2"/>
+                <polyline points="70,-50 105,0 70,50" fill="transparent" stroke="white" stroke-width="2"/>
+            </g>
+            <g id="flake">
+                <use href="#spike" transform="rotate(0)"/>
+                <use href="#spike" transform="rotate(72)"/>
+                <use href="#spike" transform="rotate(144)"/>
+                <use href="#spike" transform="rotate(216)"/>
+                <use href="#spike" transform="rotate(288)"/>
+            </g>
+        </defs>
+    </svg>
+
+    <div id="snow-container"></div>
+
+    <h1>Happy Holidays!</h1>
+    
+    <script src="snowfall.js"></script>
+</body>
+</html>
