@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Food Facts Finder</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="badge">FF</div>
+            <div>
+                <h1>Food Facts Finder</h1>
+                <p>Produktsuche mit OpenFoodFacts</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="panel">
+                <form id="searchForm" novalidate>
+                    <div class="field">
+                        <label for="q">Produktname</label>
+                        <input id="q" name="q" type="text" placeholder="z. B. Hafermilch, Pasta, Schokolade" required
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="field">
+                        <label for="lang">Sprache/Land</label>
+                        <select id="lang" name="lang">
+                            <option value="world">Weltweit</option>
+                            <option value="de">Deutsch (DE)</option>
+                            <option value="en">Englisch (EN)</option>
+                            <option value="fr">Französisch (FR)</option>
+                        </select>
+                    </div>
+
+                    <div class="field checkbox">
+                        <input id="onlyNutri" name="onlyNutri" type="checkbox" />
+                        <label for="onlyNutri">Nur mit Nutri-Score</label>
+                    </div>
+
+                    <div class="field submit">
+                        <button id="submitBtn" type="submit">Suchen</button>
+                    </div>
+                </form>
+
+                <div class="toolbar">
+                    <span id="resultCount">Noch keine Suche.</span>
+                    <button id="resetBtn" type="button">Reset</button>
+                </div>
+
+                <div id="statusBox" class="status" aria-live="polite"></div>
+            </section>
+
+            <section class="panel">
+                <div id="results" class="results"></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            Datenquelle: OpenFoodFacts · Demo für Lehrzwecke
+        </footer>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
